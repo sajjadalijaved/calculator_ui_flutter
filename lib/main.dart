@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Calculator',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -33,392 +34,389 @@ class _MyHomePageState extends State<MyHomePage> {
   String data = '';
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.height;
     return Scaffold(
-        body: Center(
-      child: Row(
-        children: [
-          const Spacer(
-            flex: 30,
-          ),
-            // main container
-          Expanded(
-              flex: 40,
-              child: Column(
-                children: [
-                    // main container
-                  Expanded(
-                      child: Container(
-                          child: Column(
-                            children: [
-                              const Spacer(
-                                flex: 1,
+      backgroundColor: Colors.white,
+        body:
+              // main container
+            Container(
+             height: height,
+             width: width,
+                child: Column(
+                  children: [
+                    const Spacer(
+                      flex: 1,
+                    ),
+                    Expanded(
+                        flex: 29,
+                        child: Row(
+                          children: [
+                            const Spacer(
+                              flex: 4,
+                            ),
+                              // screen container
+                            Expanded(
+                                flex: 92,
+                                child: Padding(
+                                  padding:  EdgeInsets.only(top: height*.03),
+                                  child: Container(
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text(
+                                      
+                                        data,
+                                        style: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 50),
+                                      ),
+                                    ),
+                                    decoration: const BoxDecoration(
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Colors.white,
+                                              offset: Offset(3, 3),
+                                              blurRadius: 2,
+                                              spreadRadius: 2),
+                                          BoxShadow(
+                                              color: Colors.white,
+                                              offset: Offset(-3, -3),
+                                              blurRadius: 2,
+                                              spreadRadius: 2)
+                                        ],
+                                        color: Color(0xff243441),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10))),
+                                  ),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            )
+                          ],
+                        )),
+                          // row 1
+                    Expanded(
+                        flex: 14,
+                        child: Row(
+                          children: [
+                            const Spacer(
+                              flex: 4,
+                            ),
+                              // all clear button
+                            Expanded(
+                                flex: 20,
+                                child: GestureDetector(
+                                  onTap: allclearClick,
+                                  child: MyButton(
+                                      data: 'Ac',
+                                      size: 20,
+                                      color: Colors.black),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            ),
+                              // del button
+                            Expanded(
+                                flex: 20,
+                                child: MyButton(
+                                    data: 'Del',
+                                    size: 20,
+                                    color: Colors.black)),
+                            const Spacer(
+                              flex: 4,
+                            ),
+                              // percentage button
+                            Expanded(
+                              flex: 20,
+                              child: MyButton(
+                                  data: '%',
+                                  size: 30,
+                                  color: Colors.black),
+                            ),
+                            const Spacer(
+                              flex: 4,
+                            ),
+                              // divide button
+                            Expanded(
+                                flex: 20,
+                                child: GestureDetector(
+                                  onTap: divdeClick,
+                                  child: MyButton(
+                                      data: '/',
+                                      size: 30,
+                                      color: Colors.black),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            )
+                          ],
+                        )),
+                          // row 2
+                    Expanded(
+                        flex: 14,
+                        child: Row(
+                          children: [
+                            const Spacer(
+                              flex: 4,
+                            ),
+                              // seven button
+                            Expanded(
+                                flex: 20,
+                                child: GestureDetector(
+                                  onTap: sevenClick,
+                                  child: MyButton(
+                                      data: '7',
+                                      size: 20,
+                                      color: Colors.black),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            ),
+                              // eight button
+                            Expanded(
+                                flex: 20,
+                                child: GestureDetector(
+                                  onTap: eightClick,
+                                  child: MyButton(
+                                      data: '8',
+                                      size: 20,
+                                      color: Colors.black),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            ),
+                              // nine button
+                            Expanded(
+                                flex: 20,
+                                child: GestureDetector(
+                                  onTap: nineClick,
+                                  child: MyButton(
+                                      data: '9',
+                                      size: 20,
+                                      color: Colors.black),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            ),
+                             // multiply button
+                            Expanded(
+                                flex: 20,
+                                child: GestureDetector(
+                                  onTap: multiplyClick,
+                                  child: MyButton(
+                                      data: '*',
+                                      size: 30,
+                                      color: Colors.black),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            )
+                          ],
+                        )),
+                          // row 3
+                    Expanded(
+                        flex: 14,
+                        child: Row(
+                          children: [
+                            const Spacer(
+                              flex: 4,
+                            ),
+                              // four button
+                            Expanded(
+                                flex: 20,
+                                child: GestureDetector(
+                                  onTap: fourClick,
+                                  child: MyButton(
+                                      data: '4',
+                                      size: 20,
+                                      color: Colors.black),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            ),
+                              // five button
+                            Expanded(
+                                flex: 20,
+                                child: GestureDetector(
+                                  onTap: fiveClick,
+                                  child: MyButton(
+                                      data: '5',
+                                      size: 20,
+                                      color: Colors.black),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            ),
+                              // six button
+                            Expanded(
+                                flex: 20,
+                                child: GestureDetector(
+                                  onTap: sixClick,
+                                  child: MyButton(
+                                      data: '6',
+                                      size: 20,
+                                      color: Colors.black),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            ),
+                              // plus button
+                            Expanded(
+                                flex: 20,
+                                child: GestureDetector(
+                                  onTap: plusClick,
+                                  child: MyButton(
+                                      data: '+',
+                                      size: 25,
+                                      color: Colors.black),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            )
+                          ],
+                        )),
+                          // row 4
+                    Expanded(
+                        flex: 14,
+                        child: Row(
+                          children: [
+                            const Spacer(
+                              flex: 4,
+                            ),
+                              // one button
+                            Expanded(
+                              flex: 20,
+                              child: GestureDetector(
+                                onTap: oneClick,
+                                child: MyButton(
+                                    data: '1',
+                                    size: 20,
+                                    color: Colors.black),
                               ),
-                              Expanded(
-                                  flex: 29,
-                                  child: Row(
-                                    children: [
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                        // screen container
-                                      Expanded(
-                                          flex: 92,
-                                          child: Container(
-                                            child: Align(
-                                              alignment: Alignment.centerRight,
-                                              child: Text(
-                                                '$data',
-                                                style: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 50),
-                                              ),
-                                            ),
-                                            decoration: const BoxDecoration(
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: Colors.white,
-                                                      offset: Offset(3, 3),
-                                                      blurRadius: 2,
-                                                      spreadRadius: 2),
-                                                  BoxShadow(
-                                                      color: Colors.white,
-                                                      offset: Offset(-3, -3),
-                                                      blurRadius: 2,
-                                                      spreadRadius: 2)
-                                                ],
-                                                color: Color(0xff243441),
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(10))),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      )
-                                    ],
-                                  )),
-                                    // row 1
-                              Expanded(
-                                  flex: 14,
-                                  child: Row(
-                                    children: [
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                        // all clear button
-                                      Expanded(
-                                          flex: 20,
-                                          child: GestureDetector(
-                                            onTap: allclearClick,
-                                            child: MyButton(
-                                                data: 'Ac',
-                                                size: 20,
-                                                color: Colors.black),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                        // del button
-                                      Expanded(
-                                          flex: 20,
-                                          child: MyButton(
-                                              data: 'Del',
-                                              size: 20,
-                                              color: Colors.black)),
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                        // persentage button
-                                      Expanded(
-                                        flex: 20,
-                                        child: MyButton(
-                                            data: '%',
-                                            size: 30,
-                                            color: Colors.black),
-                                      ),
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                        // divide button
-                                      Expanded(
-                                          flex: 20,
-                                          child: GestureDetector(
-                                            onTap: divdeClick,
-                                            child: MyButton(
-                                                data: '/',
-                                                size: 30,
-                                                color: Colors.deepOrange),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      )
-                                    ],
-                                  )),
-                                    // row 2
-                              Expanded(
-                                  flex: 14,
-                                  child: Row(
-                                    children: [
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                        // seven button
-                                      Expanded(
-                                          flex: 20,
-                                          child: GestureDetector(
-                                            onTap: sevenClick,
-                                            child: MyButton(
-                                                data: '7',
-                                                size: 20,
-                                                color: Colors.black),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                        // eight button
-                                      Expanded(
-                                          flex: 20,
-                                          child: GestureDetector(
-                                            onTap: eightClick,
-                                            child: MyButton(
-                                                data: '8',
-                                                size: 20,
-                                                color: Colors.black),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                        // nine button
-                                      Expanded(
-                                          flex: 20,
-                                          child: GestureDetector(
-                                            onTap: nineClick,
-                                            child: MyButton(
-                                                data: '9',
-                                                size: 20,
-                                                color: Colors.black),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                       // multiply button
-                                      Expanded(
-                                          flex: 20,
-                                          child: GestureDetector(
-                                            onTap: multiplyClick,
-                                            child: MyButton(
-                                                data: '*',
-                                                size: 30,
-                                                color: Colors.black),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      )
-                                    ],
-                                  )),
-                                    // row 3
-                              Expanded(
-                                  flex: 14,
-                                  child: Row(
-                                    children: [
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                        // four button
-                                      Expanded(
-                                          flex: 20,
-                                          child: GestureDetector(
-                                            onTap: fourClick,
-                                            child: MyButton(
-                                                data: '4',
-                                                size: 20,
-                                                color: Colors.black),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                        // five button
-                                      Expanded(
-                                          flex: 20,
-                                          child: GestureDetector(
-                                            onTap: fiveClick,
-                                            child: MyButton(
-                                                data: '5',
-                                                size: 20,
-                                                color: Colors.black),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                        // six button
-                                      Expanded(
-                                          flex: 20,
-                                          child: GestureDetector(
-                                            onTap: sixClick,
-                                            child: MyButton(
-                                                data: '6',
-                                                size: 20,
-                                                color: Colors.black),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                        // plus button
-                                      Expanded(
-                                          flex: 20,
-                                          child: GestureDetector(
-                                            onTap: plusClick,
-                                            child: MyButton(
-                                                data: '+',
-                                                size: 25,
-                                                color: Colors.deepOrange),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      )
-                                    ],
-                                  )),
-                                    // row 4
-                              Expanded(
-                                  flex: 14,
-                                  child: Row(
-                                    children: [
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                        // one button
-                                      Expanded(
-                                        flex: 20,
-                                        child: GestureDetector(
-                                          onTap: oneClick,
-                                          child: MyButton(
-                                              data: '1',
-                                              size: 20,
-                                              color: Colors.black),
-                                        ),
-                                      ),
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                       // two button
-                                      Expanded(
-                                          flex: 20,
-                                          child: GestureDetector(
-                                            onTap: twoClick,
-                                            child: MyButton(
-                                                data: '2',
-                                                size: 20,
-                                                color: Colors.black),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                      // three button
-                                      Expanded(
-                                          flex: 20,
-                                          child: GestureDetector(
-                                            onTap: threeClick,
-                                            child: MyButton(
-                                                data: '3',
-                                                size: 20,
-                                                color: Colors.black),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                       // minus button
-                                      Expanded(
-                                          flex: 20,
-                                          child: GestureDetector(
-                                            onTap: minusClick,
-                                            child: MyButton(
-                                                data: '-',
-                                                size: 30,
-                                                color: Colors.black),
-                                          )),
-                                      const Spacer(
-                                        flex: 4,
-                                      )
-                                    ],
-                                  )),
-                                    // row number 5
-                              Expanded(
-                                  flex: 14,
-                                  child: Row(
-                                    children: [
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                       // zero button
-                                      Expanded(
-                                        flex: 20,
-                                        child: GestureDetector(
-                                          onTap: zeroClick,
-                                          child: MyButton(
-                                              data: '0',
-                                              size: 20,
-                                              color: Colors.black),
-                                        ),
-                                      ),
-                                      const Spacer(
-                                        flex: 4,
-                                      ),
-                                    // dot button
-                                      Expanded(
-                                        flex: 20,
-                                        child: GestureDetector(
-                                          onTap: dotclearClick,
-                                          child: MyButton(
-                                              data: '.',
-                                              size: 30,
-                                              color: Colors.black),
-                                        ),
-                                      ),
-                                      const Spacer(
-                                        flex: 6,
-                                      ),
-                                    // equal button
-                                      Expanded(
-                                        flex: 40,
-                                        child: GestureDetector(
-                                          onTap: equalClick,
-                                          child: MyButton1(
-                                              data: '=',
-                                              size: 20,
-                                              color: Colors.deepOrange),
-                                        ),
-                                      ),
-                                      const Spacer(
-                                        flex: 6,
-                                      )
-                                    ],
-                                  )),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                              color: Colors.grey.shade400,
-                              boxShadow: const [
-                                BoxShadow(
-                                    color: Colors.black,
-                                    offset: Offset(3, 3),
-                                    blurRadius: 2,
-                                    spreadRadius: 2),
-                                BoxShadow(
-                                    color: Colors.black,
-                                    offset: Offset(-3, -3),
-                                    blurRadius: 2,
-                                    spreadRadius: 2)
-                              ],
-                              borderRadius: const BorderRadius.all(
-                                  Radius.circular(10))))),
-                ],
-              )),
-          const Spacer(
-            flex: 30,
-          )
-        ],
-      ),
-    ));
+                            ),
+                            const Spacer(
+                              flex: 4,
+                            ),
+                             // two button
+                            Expanded(
+                                flex: 20,
+                                child: GestureDetector(
+                                  onTap: twoClick,
+                                  child: MyButton(
+                                      data: '2',
+                                      size: 20,
+                                      color: Colors.black),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            ),
+                            // three button
+                            Expanded(
+                                flex: 20,
+                                child: GestureDetector(
+                                  onTap: threeClick,
+                                  child: MyButton(
+                                      data: '3',
+                                      size: 20,
+                                      color: Colors.black),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            ),
+                             // minus button
+                            Expanded(
+                                flex: 20,
+                                child: GestureDetector(
+                                  onTap: minusClick,
+                                  child: MyButton(
+                                      data: '-',
+                                      size: 30,
+                                      color: Colors.black),
+                                )),
+                            const Spacer(
+                              flex: 4,
+                            )
+                          ],
+                        )),
+                          // row number 5
+                    Expanded(
+                        flex: 14,
+                        child: Row(
+                          children: [
+                            const Spacer(
+                              flex: 4,
+                            ),
+                             // zero button
+                            Expanded(
+                              flex: 20,
+                              child: GestureDetector(
+                                onTap: zeroClick,
+                                child: MyButton(
+                                    data: '0',
+                                    size: 20,
+                                    color: Colors.black),
+                              ),
+                            ),
+                            const Spacer(
+                              flex: 4,
+                            ),
+                          // dot button
+                            Expanded(
+                              flex: 20,
+                              child: GestureDetector(
+                                onTap: dotclearClick,
+                                child: MyButton(
+                                    data: '.',
+                                    size: 30,
+                                    color: Colors.black),
+                              ),
+                            ),
+                            const Spacer(
+                              flex: 6,
+                            ),
+                          // equal button
+                            Expanded(
+                              flex: 40,
+                              child: GestureDetector(
+                                onTap: equalClick,
+                                child: MyButton1(
+                                    data: '=',
+                                    size: 20,
+                                    color: Colors.deepOrange),
+                              ),
+                            ),
+                            const Spacer(
+                              flex: 6,
+                            )
+                          ],
+                        )),
+                  ],
+                ),
+                decoration: BoxDecoration(
+                   
+                   color: Colors.grey.shade400,
+                    // boxShadow: const [
+                    //   BoxShadow(
+                    //       color: Colors.black,
+                    //       offset: Offset(3, 3),
+                    //       blurRadius: 2,
+                    //       spreadRadius: 2),
+                    //   BoxShadow(
+                    //       color: Colors.black,
+                    //       offset: Offset(-3, -3),
+                    //       blurRadius: 2,
+                    //       spreadRadius: 2)
+                    // ],
+                    borderRadius: const BorderRadius.all(
+                        Radius.circular(1))
+                        )
+                        ),
+           
+         
+        );
   }
 // custom button1
+  
   Widget MyButton1({String? data, Color? color, double? size, double? width}) {
     return Container(
       height: 70,
